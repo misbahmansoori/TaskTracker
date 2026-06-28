@@ -15,7 +15,9 @@ function TaskForm({ fetchTasks, selectedTask, setSelectedTask }) {
   useEffect(() => {
     if (selectedTask) {
       reset({
-        ...selectedTask,
+        title: selectedTask.title || "",
+        description: selectedTask.description || "",
+        status: selectedTask.status || "Pending",
         dueDate: selectedTask.dueDate
           ? selectedTask.dueDate.substring(0, 10)
           : "",
@@ -25,14 +27,17 @@ function TaskForm({ fetchTasks, selectedTask, setSelectedTask }) {
 
   const onSubmit = async (data) => {
     try {
-      if (selectedTask) {
-        await api.put(`/tasks/${selectedTask._id}`, data);
+      const payload = {
+        ...data,
+        description: data.description || "",
+      };
 
+      if (selectedTask) {
+        await api.put(`/tasks/${selectedTask._id}`, payload);
         toast.success("Task updated successfully!");
         setSelectedTask(null);
       } else {
-        await api.post("/tasks", data);
-
+        await api.post("/tasks", payload);
         toast.success("Task added successfully!");
       }
 
