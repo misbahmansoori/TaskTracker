@@ -8,6 +8,7 @@ It helps users manage daily tasks with a clean UI and full CRUD functionality.
 ## 🚀 Live Links
 
 Frontend: https://task-tracker-sigma-lake.vercel.app/ 
+
 Backend API: https://your-backend-link.onrender.com  
 
 ---
@@ -49,26 +50,6 @@ Backend API: https://your-backend-link.onrender.com
 
 ---
 
-## 📂 Project Structure
-TaskTracker/
-│
-├── backend/
-│ ├── config/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── middleware/
-│ └── server.js
-│
-├── frontend/
-│ ├── components/
-│ ├── pages/
-│ ├── services/
-│ └── App.jsx
-
-
-
----
 
 ## ⚙️ Installation & Setup
 
