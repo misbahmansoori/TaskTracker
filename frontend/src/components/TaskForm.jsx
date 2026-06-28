@@ -43,6 +43,8 @@ function TaskForm({ fetchTasks, selectedTask, setSelectedTask }) {
 
       reset();
       fetchTasks();
+
+      console.log("FORM DATA SENT:", data);
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong!");
