@@ -1,18 +1,18 @@
-import { FaClipboardList } from "react-icons/fa";
 import TaskCard from "./TaskCard";
 
-function TaskList({
-  tasks = [],
-  fetchTasks,
-  setSelectedTask,
-  loading,
-}) {
+function TaskList({ tasks = [], fetchTasks, setSelectedTask, loading, darkMode }) {
   if (loading) {
     return (
-      <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-12 flex flex-col items-center">
+      <div
+        className={
+          darkMode
+            ? "bg-gray-900 rounded-2xl shadow-md border border-gray-700 p-12 flex flex-col items-center text-white"
+            : "bg-white rounded-2xl shadow-md border border-gray-200 p-12 flex flex-col items-center"
+        }
+      >
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent"></div>
 
-        <p className="mt-5 text-gray-500 font-medium">
+        <p className={darkMode ? "mt-5 text-gray-300 font-medium" : "mt-5 text-gray-500 font-medium"}>
           Loading tasks...
         </p>
       </div>
@@ -21,19 +21,20 @@ function TaskList({
 
   if (!Array.isArray(tasks) || tasks.length === 0) {
     return (
-      <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-12 text-center">
+      <div
+        className={
+          darkMode
+            ? "bg-gray-900 rounded-2xl shadow-md border border-gray-700 p-10 text-center text-white"
+            : "bg-white rounded-2xl shadow-md border border-gray-200 p-10 text-center"
+        }
+      >
+        <div className="text-6xl mb-4">📭</div>
 
-        <div className="flex justify-center mb-5">
-          <div className="bg-blue-100 p-5 rounded-full">
-            <FaClipboardList className="text-4xl text-blue-600" />
-          </div>
-        </div>
-
-        <h2 className="text-2xl font-bold text-gray-800">
+        <h2 className={darkMode ? "text-2xl font-bold text-white" : "text-2xl font-bold text-gray-700"}>
           No Tasks Yet
         </h2>
 
-        <p className="text-gray-500 mt-3 max-w-sm mx-auto">
+        <p className={darkMode ? "text-gray-300 mt-2" : "text-gray-500 mt-2"}>
           Create your first task and start organizing your work efficiently.
         </p>
       </div>
@@ -48,6 +49,7 @@ function TaskList({
           task={task}
           fetchTasks={fetchTasks}
           setSelectedTask={setSelectedTask}
+          darkMode={darkMode}
         />
       ))}
     </div>
